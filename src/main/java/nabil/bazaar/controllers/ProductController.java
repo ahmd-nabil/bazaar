@@ -13,12 +13,13 @@ import java.util.List;
 /**
  * @author Ahmed Nabil
  */
-@RestController()
+@RestController
 @RequiredArgsConstructor
+@CrossOrigin
 public class ProductController {
 
-    private static final String PRODUCT_API = "api/v1/products";
-    private static final String PRODUCT_API_ID = "api/v1/products/{id}";
+    static final String PRODUCT_API = "/api/v1/products";
+    static final String PRODUCT_API_ID = "/api/v1/products/{id}";
 
     private final ProductService productService;
     @GetMapping(PRODUCT_API_ID)
