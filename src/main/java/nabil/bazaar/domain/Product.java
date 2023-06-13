@@ -1,6 +1,5 @@
 package nabil.bazaar.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -82,7 +81,6 @@ public class Product {
     private LocalDateTime lastUpdated;
 
     @Builder.Default
-    @JsonManagedReference
     @ManyToMany(mappedBy = "products", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Set<Category> categories = new HashSet<>();
 
