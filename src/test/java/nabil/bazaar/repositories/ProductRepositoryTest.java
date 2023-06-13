@@ -33,7 +33,7 @@ class ProductRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        category = Category.builder().name("Laptop").build();
+        category = categoryRepository.save(Category.builder().name("Laptop").build());
         product = productRepository.save(
                 Product.builder()
                         .name("Lenovo L340")

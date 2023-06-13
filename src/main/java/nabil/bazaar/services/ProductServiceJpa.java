@@ -3,8 +3,10 @@ package nabil.bazaar.services;
 import lombok.RequiredArgsConstructor;
 import nabil.bazaar.domain.Product;
 import nabil.bazaar.exceptions.ProductNotFoundException;
+import nabil.bazaar.repositories.CategoryRepository;
 import nabil.bazaar.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProductServiceJpa implements ProductService{
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
     @Override
     public List<Product> findAll() {
         return productRepository.findAll();
@@ -27,7 +30,13 @@ public class ProductServiceJpa implements ProductService{
     }
 
     @Override
+    @Transactional
     public Product save(Product product) {
+        product.getCategories().forEach(cat -> {
+            if(cat.getId() == null) {
+                categoryRepository.save(cat);
+            }
+        });
         return productRepository.save(product);
     }
 

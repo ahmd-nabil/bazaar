@@ -81,7 +81,7 @@ public class Product {
     private LocalDateTime lastUpdated;
 
     @Builder.Default
-    @ManyToMany(mappedBy = "products", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.MERGE)
     private Set<Category> categories = new HashSet<>();
 
     public void addCategory(Category category) {
