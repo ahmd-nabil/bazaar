@@ -37,10 +37,13 @@ public class Bootstrap implements CommandLineRunner {
             populateProducts();
         }
 
-        List<Product> products = productCsvService.getProductListFromCsv();
-
+        List<Product> products = productCsvService.getProductListFromCsv("products.csv");
+        List<Product> products2 = productCsvService.getProductListFromCsv("books.csv");
         if(productRepository.count() <= 20) {
             products.forEach(productService::save);
+        }
+        if(productRepository.count() <= 50) {
+            products2.forEach(productService::save);
         }
 
     }

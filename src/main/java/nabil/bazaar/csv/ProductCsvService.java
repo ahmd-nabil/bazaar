@@ -19,8 +19,8 @@ import java.util.List;
 @Service
 public class ProductCsvService {
 
-    public List<Product> getProductListFromCsv() throws FileNotFoundException {
-        File csvFile = ResourceUtils.getFile("classpath:products.csv");
+    public List<Product> getProductListFromCsv(String filename) throws FileNotFoundException {
+        File csvFile = ResourceUtils.getFile("classpath:"+filename);
         List<ProductCSV> productCsvList = new CsvToBeanBuilder<ProductCSV>(new FileReader(csvFile)).withType(ProductCSV.class).build().parse();
         List<Product> products = new ArrayList<>();
         productCsvList.forEach(csv -> {
