@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import nabil.bazaar.domain.Product;
 import nabil.bazaar.exceptions.ProductNotFoundException;
 import nabil.bazaar.services.ProductService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.List;
 
 /**
  * @author Ahmed Nabil
@@ -27,11 +27,11 @@ public class ProductController {
         return ResponseEntity.ok(productService.findById(id).orElseThrow(() -> new ProductNotFoundException(id)));
     }
     @GetMapping(PRODUCT_API)
-    public List<Product> findAllProducts(
+    public Page<Product> findAllProducts(
             @RequestParam(required = false) Integer pageNumber,
             @RequestParam(required = false) Integer pageSize
     ) {
-        return productService.findAll();
+        return productService.findAll(pageNumber, null);        // always use default page size
     }
 
     @PostMapping(PRODUCT_API)

@@ -1,15 +1,19 @@
 package nabil.bazaar.services;
 
 import lombok.RequiredArgsConstructor;
+import nabil.bazaar.domain.Category;
 import nabil.bazaar.domain.Product;
 import nabil.bazaar.exceptions.ProductNotFoundException;
 import nabil.bazaar.repositories.CategoryRepository;
 import nabil.bazaar.repositories.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author Ahmed Nabil
@@ -19,9 +23,11 @@ import java.util.Optional;
 public class ProductServiceJpa implements ProductService{
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final PagingService pagingService;
     @Override
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public Page<Product> findAll(Integer pageNumber, Integer pageSize) {
+        PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
+        return productRepository.findAll(pageRequest);
     }
 
     @Override
@@ -43,6 +49,7 @@ public class ProductServiceJpa implements ProductService{
                 }
             }
         });
+        product.setCategories(safeCategories);
         return productRepository.save(product);
     }
 
