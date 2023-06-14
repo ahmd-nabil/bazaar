@@ -32,9 +32,15 @@ public class ProductServiceJpa implements ProductService{
     @Override
     @Transactional
     public Product save(Product product) {
+        Set<Category> safeCategories = new HashSet<>();
         product.getCategories().forEach(cat -> {
             if(cat.getId() == null) {
-                categoryRepository.save(cat);
+                Optional<Category> foundCategoryOptional = categoryRepository.findByNameIsLikeIgnoreCase(cat.getName());
+                if(foundCategoryOptional.isPresent()) {
+                    safeCategories.add(foundCategoryOptional.get());
+                } else {
+                    safeCategories.add(categoryRepository.save(cat));
+                }
             }
         });
         return productRepository.save(product);
