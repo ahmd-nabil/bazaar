@@ -1,0 +1,49 @@
+name,description,unitPrice,imageUrl,unitsInStock,active,sku,category
+Apple iPhone 12 Pro,Apple's latest flagship smartphone with 5G connectivity,999.00,https://example.com/iphone12pro.jpg,50,true,IP12PRO,Electronics
+Samsung Galaxy S21,The latest Android smartphone from Samsung,799.00,https://example.com/galaxys21.jpg,100,true,GALS21,Electronics
+Sony PlayStation 5,The latest gaming console from Sony,499.00,https://example.com/ps5.jpg,75,true,PS5,Electronics
+Apple MacBook Pro,Apple's high-end laptop with Retina display,1999.00,https://example.com/macbookpro.jpg,25,true,MBP16,Laptops
+Dell XPS 13,One of the best ultrabooks on the market,1199.00,https://example.com/xps13.jpg,10,true,XPS13,Laptops
+HP Spectre x360,An excellent 2-in-1 laptop with a 4K display,1499.00,https://example.com/spectrex360.jpg,0,false,SPEC360,Laptops
+Bose QuietComfort 35 II,One of the best noise-cancelling headphones available,349.00,https://example.com/qc35.jpg,50,true,QC35,Audio
+Sonos One,Smart speaker with support for Amazon Alexa and Google Assistant,199.00,https://example.com/sonosone.jpg,100,true,SONOS1,Audio
+Sony WH-1000XM4,Wireless headphones with excellent noise cancelling,349.00,https://example.com/wh1000xm4.jpg,75,true,WH1000XM4,Audio
+Canon EOS R5,The latest high-end mirrorless camera from Canon,3899.00,https://example.com/eosr5.jpg,25,true,EOSR5,Cameras
+Nikon Z7 II,The latest high-end mirrorless camera from Nikon,2999.00,https://example.com/z7ii.jpg,10,true,Z7II,Cameras
+Fujifilm X-T4,One of the best APS-C mirrorless cameras on the market,1699.00,https://example.com/xt4.jpg,0,false,XT4,Cameras
+Leica Q2,The latest full-frame compact camera from Leica,5495.00,https://example.com/q2.jpg,50,true,Q2,Cameras
+Samsung QLED Q90T,One of the best 4K TVs on the market,1999.00,https://example.com/q90t.jpg,100,true,Q90T,TVs
+LG OLED CX,One of the best OLED TVs on the market,2499.00,https://example.com/oledcx.jpg,75,true,OLEDCX,TVs
+Sony Bravia X900H,One of the best mid-range 4K TVs on the market,1499.00,https://example.com/x900h.jpg,25,true,X900H,TVs
+Nintendo Switch,The latest gaming console from Nintendo,299.00,https://example.com/switch.jpg,50,true,SWITCH,Gaming
+Microsoft Xbox Series X,The latest gaming console from Microsoft,499.00,https://example.com/xboxseriesx.jpg,100,true,XSX,Gaming
+PlayStation 5 Digital Edition,The digital-only version of Sony's latest gaming console,399.00,https://example.com/ps5de.jpg,75,true,PS5DE,Gaming
+Nike Air Max 270,One of Nike's most popular running shoes,150.00,https://example.com/airmax270.jpg,50,true,AM270,Shoes
+Adidas Ultraboost 21,One of Adidas's most popular running shoes,180.00,https://example.com/ultraboost21.jpg,100,true,UB21,Shoes
+New Balance 990v5,One of New Balance's most popular running shoes,174.99,https://example.com/990v5.jpg,75,true,NB990V5,Shoes
+Brooks Ghost 13,One of Brooks's most popular running shoes,129.99,https://example.com/ghost13.jpg,25,true,GHOST13,Shoes
+The North Face Apex Flex GTX,One of The North Face's best waterproof jackets,299.00,https://example.com/apexflexgtx.jpg,50,true,APXFGTX,Jackets
+Patagonia Nano Puff,One of Patagonia's most popular insulated jackets,199.00,https://example.com/nanopuff.jpg,100,true,NANOPUFF,Jackets
+Arcadia II Rain Jacket,One of Columbia's best rain jackets,99.99,https://example.com/arcadiarain.jpg,75,true,ARCADIA,Jackets
+The North Face Denali Fleece Jacket,One of The North Face's most popular fleece jackets,199.00,https://example.com/denali.jpg,25,true,DENALI,Jackets
+Patagonia Better Sweater,One of Patagonia's most popular fleece jackets,139.00,https://example.com/bettersweater.jpg,0,false,BETTER,Jackets
+Lululemon Align Leggings,One of Lululemon's most popular leggings,98.00,https://example.com/alignleggings.jpg,50,true,ALIGN,Pants
+Nike Yoga Dri-FIT Tank Top,A moisture-wicking tank top for yoga and other workouts,40.00,https://example.com/niketank.jpg,100,true,NKTANK,Tops
+Adidas Originals Trefoil Hoodie,A classic hoodie from Adidas,70.00,https://example.com/trefoilhoodie.jpg,75,true,TREFOIL,Hoodies
+The North Face Apex Bionic 2 Jacket,One of The North Face's most popular softshell jackets,149.00,https://example.com/apexbionic2.jpg,25,true,APXBIONIC,Jackets
+Patagonia Torrentshell 3L Jacket,One of Patagonia's best rain jackets,149.00,https://example.com/torrentshell.jpg,50,true,TORRENT,Jackets
+Columbia Bugaboo II Fleece Interchange Jacket,A versatile 3-in-1 jacket from Columbia,199.00,https://example.com/bugaboo.jpg,100,true,BUGABOO,Jackets
+Levi's 501 Original Fit Jeans,A classic pair of jeans from Levi's,69.50,https://example.com/501jeans.jpg,75,true,501JEANS,Pants
+Gap Vintage Soft Joggers,Soft and comfortable joggers from Gap,49.95,https://example.com/gapjoggers.jpg,25,true,GAPJOGGERS,Pants
+H&M Slim Fit Blazer,A stylish blazer from H&M,99.00,https://example.com/hmblazer.jpg,0,false,HMBLAZER,Blazers
+Zara Textured Knit Sweater,A cozy sweater with a unique texture from Zara,49.90,https://example.com/zarasweater.jpg,50,true,ZSWEATER,Sweaters
+Uniqlo Ultra Light Down Jacket,One of Uniqlo's most popular down jackets,79.90,https://example.com/uldjacket.jpg,100,true,ULDJACKET,Jackets
+Everlane The ReNew Anorak,A sustainable and stylish anorak from Everlane,88.00,https://example.com/everlaneanorak.jpg,75,true,ANORAK,Jackets
+Madewell The Perfect Vintage Jean,A classic and flattering pair of jeans from Madewell,128.00,https://example.com/madewelljeans.jpg,25,true,MADJEANS,Pants
+Zara Basic Trench Coat,A timeless trench coat from Zara,99.90,https://example.com/zaratrench.jpg,50,true,ZTRENCH,Coats
+Lululemon Surge Joggers,Comfortable and stylish joggers from Lululemon,118.00,https://example.com/surgejoggers.jpg,100,true,SURGEJOG,Pants
+Nike Sportswear Windrunner Jacket,A lightweight and stylish jacket from Nike,100.00,https://example.com/windrunner.jpg,75,true,WINDRUN,Jackets
+Adidas Tiro 19 Training Pants,Comfortable and stylish training pants from Adidas,45.00,https://example.com/tiro19.jpg,25,true,TIRO19,Pants
+The North Face Thermoball Eco Jacket,A sustainable and warm jacket from The North Face,199.00,https://example.com/thermoball.jpg,50,true,THERMO,Jackets
+Patagonia Retro Pile Fleece Jacket,A stylish and comfortable fleece jacket from Patagonia,139.00,https://example.com/retropile.jpg,100,true,RETRO,Jackets
+Columbia Heavenly Hooded Jacket,A warm and stylish jacket from Columbia,140.00,https://example.com/heavenly.jpg,75,true,HEAVENLY,Jackets

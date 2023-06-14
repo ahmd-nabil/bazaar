@@ -1,16 +1,19 @@
 package nabil.bazaar.bootstrap;
 
 import lombok.RequiredArgsConstructor;
+import nabil.bazaar.csv.ProductCsvService;
 import nabil.bazaar.domain.Category;
 import nabil.bazaar.domain.Product;
 import nabil.bazaar.repositories.CategoryRepository;
 import nabil.bazaar.repositories.ProductRepository;
+import nabil.bazaar.services.ProductService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author Ahmed Nabil
@@ -21,6 +24,8 @@ public class Bootstrap implements CommandLineRunner {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final ProductCsvService productCsvService;
+    private final ProductService productService;
     @Transactional
     @Override
     public void run(String... args) throws Exception {
@@ -31,6 +36,13 @@ public class Bootstrap implements CommandLineRunner {
         if(productRepository.count() <= 0) {
             populateProducts();
         }
+
+        List<Product> products = productCsvService.getProductListFromCsv();
+
+        if(productRepository.count() <= 20) {
+            products.forEach(productService::save);
+        }
+
     }
 
 
