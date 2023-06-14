@@ -3,6 +3,7 @@ package nabil.bazaar.services;
 import lombok.RequiredArgsConstructor;
 import nabil.bazaar.domain.Category;
 import nabil.bazaar.domain.Product;
+import nabil.bazaar.exceptions.CategoryNotFoundException;
 import nabil.bazaar.exceptions.ProductNotFoundException;
 import nabil.bazaar.repositories.CategoryRepository;
 import nabil.bazaar.repositories.ProductRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.Set;
 
@@ -28,6 +30,13 @@ public class ProductServiceJpa implements ProductService{
     public Page<Product> findAll(Integer pageNumber, Integer pageSize) {
         PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
         return productRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public Page<Product> findAll(Integer pageNumber, Integer pageSize, Long categoryId) {
+        if(categoryId == null) return findAll(pageNumber, pageSize);    // if no catId return to fetch all, otherwise search for specific category
+        PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
+        return productRepository.findAllByCategories_Id(categoryId, pageRequest);
     }
 
     @Override

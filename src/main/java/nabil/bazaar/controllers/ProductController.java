@@ -29,9 +29,10 @@ public class ProductController {
     @GetMapping(PRODUCT_API)
     public Page<Product> findAllProducts(
             @RequestParam(required = false) Integer pageNumber,
-            @RequestParam(required = false) Integer pageSize
+            @RequestParam(required = false) Integer pageSize,
+            @RequestParam(required = false) Long categoryId
     ) {
-        return productService.findAll(pageNumber, null);        // always use default page size
+        return productService.findAll(pageNumber, pageSize, categoryId);
     }
 
     @PostMapping(PRODUCT_API)

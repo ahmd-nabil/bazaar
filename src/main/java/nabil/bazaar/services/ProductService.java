@@ -10,6 +10,7 @@ import java.util.Optional;
  */
 public interface ProductService {
     Page<Product> findAll(Integer pageNumber, Integer pageSize);
+    Page<Product> findAll(Integer pageNumber, Integer pageSize, Long categoryId);
     Optional<Product> findById(Long id);
     Product save(Product product);
     Optional<Product> update(Long id, Product update);
