@@ -36,37 +36,61 @@ public class ProductServiceJpa implements ProductService{
     }
 
     @Override
-    @Transactional
     public Product save(Product product) {
-        Set<Category> safeCategories = new HashSet<>();
-        product.getCategories().forEach(cat -> {
-            if(cat.getId() == null) {
-                Optional<Category> foundCategoryOptional = categoryRepository.findByNameIsLikeIgnoreCase(cat.getName());
-                if(foundCategoryOptional.isPresent()) {
-                    safeCategories.add(foundCategoryOptional.get());
-                } else {
-                    safeCategories.add(categoryRepository.save(cat));
-                }
-            }
-        });
+        Set<Category> safeCategories = getSafeCategories(product.getCategories());
         product.setCategories(safeCategories);
         return productRepository.save(product);
     }
 
     @Override
+    @Transactional
     public Optional<Product> update(Long id, Product update) {
         if(productRepository.existsById(id)) {
             Product product = productRepository.findById(id).orElseThrow(()->new ProductNotFoundException(id));
             product.setActive(update.isActive());
-            product.setCategories(update.getCategories());
             product.setName(update.getName());
             product.setDescription(update.getDescription());
             product.setSku(update.getSku());
             product.setImageUrl(update.getImageUrl());
             product.setUnitPrice(update.getUnitPrice());
+            Set<Category> updateCategories = getSafeCategories(update.getCategories());
+            Iterator<Category> itr = product.getCategories().iterator();
+            while(itr.hasNext()) {
+                Category cat = itr.next();
+                if(!updateCategories.contains(cat)) {
+                    itr.remove();
+                    cat.getProducts().remove(product);
+                }
+            }
+
+            for(Category cat: updateCategories) {
+                if(!product.getCategories().contains(cat)) {
+                    product.getCategories().add(cat);
+                    cat.getProducts().add(product);
+                }
+            }
+            productRepository.save(product);
             return Optional.of(productRepository.save(product));
         }
         return Optional.empty();
+    }
+
+    private Set<Category> getSafeCategories(Set<Category> categories) {
+        Set<Category> safeCategories = new HashSet<>();
+        categories.forEach(cat -> {
+            if(cat.getId() != null) {
+                Category category = categoryRepository.findById(cat.getId()).orElseThrow(()->new CategoryNotFoundException(cat.getId()));
+                safeCategories.add(category);
+            } else {
+                Optional<Category> categoryOptional = categoryRepository.findByNameIsLikeIgnoreCase(cat.getName());
+                if(categoryOptional.isPresent()) {
+                    safeCategories.add(categoryOptional.get());
+                } else {
+                    safeCategories.add(categoryRepository.save(cat));
+                }
+            }
+        });
+        return safeCategories;
     }
 
     @Override
