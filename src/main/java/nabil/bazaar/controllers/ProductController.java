@@ -30,9 +30,10 @@ public class ProductController {
     public Page<Product> findAllProducts(
             @RequestParam(required = false) Integer pageNumber,
             @RequestParam(required = false) Integer pageSize,
-            @RequestParam(required = false) Long categoryId
+            @RequestParam(required = false) Long categoryId,
+            @RequestParam(required = false) String search
     ) {
-        return productService.findAll(pageNumber, pageSize, categoryId);
+        return productService.findAll(pageNumber, pageSize, categoryId, search);
     }
 
     @PostMapping(PRODUCT_API)

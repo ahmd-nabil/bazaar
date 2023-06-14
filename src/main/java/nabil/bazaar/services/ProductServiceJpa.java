@@ -38,6 +38,12 @@ public class ProductServiceJpa implements ProductService{
         PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
         return productRepository.findAllByCategories_Id(categoryId, pageRequest);
     }
+    @Override
+    public Page<Product> findAll(Integer pageNumber, Integer pageSize, Long categoryId, String search) {
+        if(search == null) return findAll(pageNumber, pageSize, categoryId);
+        PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
+        return productRepository.findAllByNameContainingIgnoreCase(search, pageRequest);
+    }
 
     @Override
     public Optional<Product> findById(Long id) {
