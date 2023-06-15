@@ -14,7 +14,7 @@ public class PagingService {
         Integer requestPageNumber = DEFAULT_PAGE_NUMBER;
         Integer requestPageSize = DEFAULT_PAGE_SIZE;
         if(pageNumber != null && pageNumber > 0) {
-            requestPageNumber = pageNumber;
+            requestPageNumber = pageNumber - 1;
         }
         return PageRequest.of(requestPageNumber, requestPageSize);
     }
