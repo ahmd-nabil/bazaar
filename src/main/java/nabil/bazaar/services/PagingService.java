@@ -11,10 +11,13 @@ public class PagingService {
     private static final Integer DEFAULT_PAGE_NUMBER = 0;
     private static final Integer DEFAULT_PAGE_SIZE = 28;
     public PageRequest getPageRequest(Integer pageNumber, Integer pageSize) {
-        Integer requestPageNumber = DEFAULT_PAGE_NUMBER;
-        Integer requestPageSize = DEFAULT_PAGE_SIZE;
+        int requestPageNumber = DEFAULT_PAGE_NUMBER;
+        int requestPageSize = DEFAULT_PAGE_SIZE;
         if(pageNumber != null && pageNumber > 0) {
             requestPageNumber = pageNumber - 1;
+        }
+        if(pageSize != null && pageSize > 0) {
+            requestPageSize = pageSize;
         }
         return PageRequest.of(requestPageNumber, requestPageSize);
     }
