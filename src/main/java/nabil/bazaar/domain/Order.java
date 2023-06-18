@@ -3,7 +3,11 @@ package nabil.bazaar.domain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ahmed Nabil
@@ -11,7 +15,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Builder
+@Table(name = "app_order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +40,10 @@ public class Order {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Address billingAddress;
+
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderLine> orderLines = new ArrayList<>();
 
 
 
