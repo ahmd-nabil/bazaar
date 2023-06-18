@@ -3,6 +3,7 @@ package nabil.bazaar.domain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
+@Data
 public class State {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
