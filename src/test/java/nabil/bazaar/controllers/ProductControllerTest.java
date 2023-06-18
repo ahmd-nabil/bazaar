@@ -73,7 +73,7 @@ class ProductControllerTest {
 
     @Test
     void findAllProducts() throws Exception {
-        given(productService.findAll(any(), any())).willReturn(new PageImpl<>(Collections.singletonList(product)));
+        given(productService.findAll(any(), any(), any(), any())).willReturn(new PageImpl<>(Collections.singletonList(product)));
         mockMvc.perform(get(ProductController.PRODUCT_API))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
