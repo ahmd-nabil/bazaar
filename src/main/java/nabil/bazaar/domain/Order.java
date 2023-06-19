@@ -44,7 +44,4 @@ public class Order {
     @Builder.Default
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderLine> orderLines = new ArrayList<>();
-
-
-
 }

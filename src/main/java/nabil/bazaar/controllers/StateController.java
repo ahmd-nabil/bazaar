@@ -15,7 +15,7 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/states")
+@RequestMapping("/api/v1/states")
 public class StateController {
     private final StateRepository stateRepository;
 

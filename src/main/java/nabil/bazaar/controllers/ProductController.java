@@ -15,7 +15,6 @@ import java.net.URI;
  */
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin
 public class ProductController {
 
     static final String PRODUCT_API = "/api/v1/products";

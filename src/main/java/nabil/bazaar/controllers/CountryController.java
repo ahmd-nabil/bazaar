@@ -14,7 +14,7 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/countries")
+@RequestMapping("/api/v1/countries")
 public class CountryController {
     private final CountryRepository countryRepository;
     @GetMapping()
