@@ -18,8 +18,9 @@ import java.util.List;
 @RequestMapping
 public class StateController {
     public static final String STATE_API = "/api/v1/states";
+    public static final String STATE_API_ID = STATE_API + "/{countryId}";
     private final StateRepository stateRepository;
-    @GetMapping("/{countryId}")
+    @GetMapping(STATE_API_ID)
     public List<State> getStatesByCountry(@PathVariable Integer countryId) {
         return stateRepository.findAllByCountry_Id(countryId);
     }

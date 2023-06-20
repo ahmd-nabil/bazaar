@@ -18,7 +18,7 @@ import java.util.List;
 public class CountryController {
     public static final String COUNTRY_API = "/api/v1/countries";
     private final CountryRepository countryRepository;
-    @GetMapping()
+    @GetMapping(COUNTRY_API)
     public List<Country> getAllCountries() {
         return countryRepository.findAll();
     }
