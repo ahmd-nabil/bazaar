@@ -15,10 +15,11 @@ import java.net.URI;
  */
 @RestController
 @RequiredArgsConstructor
+@RequestMapping
 public class ProductController {
 
-    static final String PRODUCT_API = "/api/v1/products";
-    static final String PRODUCT_API_ID = "/api/v1/products/{id}";
+    public static final String PRODUCT_API = "/api/v1/products";
+    public static final String PRODUCT_API_ID = "/api/v1/products/{id}";
 
     private final ProductService productService;
     @GetMapping(PRODUCT_API_ID)

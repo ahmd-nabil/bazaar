@@ -15,10 +15,10 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/states")
+@RequestMapping
 public class StateController {
+    public static final String STATE_API = "/api/v1/states";
     private final StateRepository stateRepository;
-
     @GetMapping("/{countryId}")
     public List<State> getStatesByCountry(@PathVariable Integer countryId) {
         return stateRepository.findAllByCountry_Id(countryId);

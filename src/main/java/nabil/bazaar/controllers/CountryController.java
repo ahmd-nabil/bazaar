@@ -14,8 +14,9 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/countries")
+@RequestMapping
 public class CountryController {
+    public static final String COUNTRY_API = "/api/v1/countries";
     private final CountryRepository countryRepository;
     @GetMapping()
     public List<Country> getAllCountries() {
