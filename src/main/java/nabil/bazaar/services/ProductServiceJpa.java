@@ -60,34 +60,30 @@ public class ProductServiceJpa implements ProductService{
     @Override
     @Transactional
     public Optional<Product> update(Long id, Product update) {
-        if(productRepository.existsById(id)) {
-            Product product = productRepository.findById(id).orElseThrow(()->new ProductNotFoundException(id));
-            product.setActive(update.isActive());
-            product.setName(update.getName());
-            product.setDescription(update.getDescription());
-            product.setSku(update.getSku());
-            product.setImageUrl(update.getImageUrl());
-            product.setUnitPrice(update.getUnitPrice());
-            Set<Category> updateCategories = getSafeCategories(update.getCategories());
-            Iterator<Category> itr = product.getCategories().iterator();
-            while(itr.hasNext()) {
-                Category cat = itr.next();
-                if(!updateCategories.contains(cat)) {
-                    itr.remove();
-                    cat.getProducts().remove(product);
-                }
+        Product product = productRepository.findById(id).orElseThrow(()->new ProductNotFoundException(id));
+        product.setActive(update.isActive());
+        product.setName(update.getName());
+        product.setDescription(update.getDescription());
+        product.setSku(update.getSku());
+        product.setImageUrl(update.getImageUrl());
+        product.setUnitPrice(update.getUnitPrice());
+        Set<Category> updateCategories = getSafeCategories(update.getCategories());
+        Iterator<Category> itr = product.getCategories().iterator();
+        while(itr.hasNext()) {
+            Category cat = itr.next();
+            if(!updateCategories.contains(cat)) {
+                itr.remove();
+                cat.getProducts().remove(product);
             }
-
-            for(Category cat: updateCategories) {
-                if(!product.getCategories().contains(cat)) {
-                    product.getCategories().add(cat);
-                    cat.getProducts().add(product);
-                }
-            }
-            productRepository.save(product);
-            return Optional.of(productRepository.save(product));
         }
-        return Optional.empty();
+
+        for(Category cat: updateCategories) {
+            if(!product.getCategories().contains(cat)) {
+                product.getCategories().add(cat);
+                cat.getProducts().add(product);
+            }
+        }
+        return Optional.of(productRepository.save(product));
     }
 
     private Set<Category> getSafeCategories(Set<Category> categories) {
