@@ -5,7 +5,7 @@ import nabil.bazaar.domain.Category;
 import nabil.bazaar.exceptions.CategoryNotFoundException;
 import nabil.bazaar.repositories.CategoryRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,8 +21,8 @@ public class CategoryServiceJpa implements CategoryService{
     private final PagingService pagingService;
     @Override
     public Page<Category> findAll(Integer pageNumber, Integer pageSize) {
-        PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
-        return categoryRepository.findAll(pageRequest);
+        Pageable pageable = pagingService.getPageRequest(pageNumber, pageSize);
+        return categoryRepository.findAll(pageable);
     }
 
     @Override

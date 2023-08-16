@@ -8,7 +8,7 @@ import nabil.bazaar.exceptions.ProductNotFoundException;
 import nabil.bazaar.repositories.CategoryRepository;
 import nabil.bazaar.repositories.ProductRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,21 +28,21 @@ public class ProductServiceJpa implements ProductService{
     private final PagingService pagingService;
     @Override
     public Page<Product> findAll(Integer pageNumber, Integer pageSize) {
-        PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
-        return productRepository.findAll(pageRequest);
+        Pageable pageable = pagingService.getPageRequest(pageNumber, pageSize);
+        return productRepository.findAll(pageable);
     }
 
     @Override
     public Page<Product> findAll(Integer pageNumber, Integer pageSize, Long categoryId) {
         if(categoryId == null) return findAll(pageNumber, pageSize);    // if no catId return to fetch all, otherwise search for specific category
-        PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
-        return productRepository.findAllByCategories_Id(categoryId, pageRequest);
+        Pageable pageable = pagingService.getPageRequest(pageNumber, pageSize);
+        return productRepository.findAllByCategories_Id(categoryId, pageable);
     }
     @Override
     public Page<Product> findAll(Integer pageNumber, Integer pageSize, Long categoryId, String search) {
         if(search == null) return findAll(pageNumber, pageSize, categoryId);
-        PageRequest pageRequest = pagingService.getPageRequest(pageNumber, pageSize);
-        return productRepository.findAllByNameContainingIgnoreCase(search, pageRequest);
+        Pageable pageable = pagingService.getPageRequest(pageNumber, pageSize);
+        return productRepository.findAllByNameContainingIgnoreCase(search, pageable);
     }
 
     @Override
